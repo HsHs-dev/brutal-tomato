@@ -1,6 +1,6 @@
 # Front-end Style Guide
 
-Neo-brutalist Pomodoro timer. Working title: **Hard Tomato** (rename freely).
+Neo-brutalist Pomodoro timer. Working title: **Brutal Tomato** (rename freely).
 
 ## Overview
 
@@ -32,7 +32,7 @@ Modals: **Settings** and **Report** (cream panels).
 
 ```
 +------------------------------------------------------------------------+
-| (v) HARD TOMATO                        [Report] [Setting] [Sign In]    |
+| (v) Brutal Tomato                        [Report] [Setting] [Sign In]    |
 |                                                                        |
 |                [ POMODORO ]   Short Break   Long Break                 |
 |                                                                        |
@@ -101,6 +101,7 @@ Modals: **Settings** and **Report** (cream panels).
 | `gray` | `#9CA3AF` | Footer small print |
 
 **Rules**
+
 - White text on mode colors and pink. Black text on white, yellow, green and cream.
 - White on red 4.74:1, teal 4.71:1, blue 6.37:1, pink 4.96:1. Black borders on red / teal / blue stay at 3.3:1 or higher.
 - The only transparency is the modal backdrop (`black` at 70%).

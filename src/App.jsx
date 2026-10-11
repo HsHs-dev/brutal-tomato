@@ -1,121 +1,24 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import Header from "./components/Header"
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    <div className="app flex flex-col min-h-dvh">
+      <Header />
+      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 md:py-16">
+        <section className="timer mb-24 flex flex-col items-center">
+          <div role="tablist" className="modes mb-12 flex flex-wrap justify-center gap-3">
+            <button role="tab" aria-selected={true} className="border-2 border-white px-4 py-3 font-bold text-white transition hover:bg-white hover:text-black sm:px-6 aria-selected:bg-black aria-selected:shadow-neo-white cursor-pointer aria-selected:hover:bg-black aria-selected:hover:text-white">Pomodoro</button>
+            <button role="tab" className="border-2 border-white px-4 py-3 font-bold text-white transition hover:bg-white hover:text-black sm:px-6 aria-selected:bg-black aria-selected:shadow-neo-white cursor-pointer aria-selected:hover:bg-black aria-selected:hover:text-white">Short Break</button>
+            <button role="tab" className="border-2 border-white px-4 py-3 font-bold text-white transition hover:bg-white hover:text-black sm:px-6 aria-selected:bg-black aria-selected:shadow-neo-white cursor-pointer aria-selected:hover:bg-black aria-selected:hover:text-white">Long Break</button>
+          </div>
+          <div role="timer" aria-live="off" className="mb-12 whitespace-nowrap font-heading leading-none tabular-nums text-hard-lg text-[clamp(5.5rem,26vw,7rem)] md:text-[12rem]">25:00</div>
+          <button className="border-4 border-black bg-white px-12 py-5 font-heading text-3xl text-black shadow-neo-xl transition hover:-translate-x-1 hover:-translate-y-1 hover:bg-neo-yellow hover:shadow-neo-2xl active:translate-x-2 active:translate-y-2 active:shadow-none md:px-16 md:py-6 md:text-4xl">START</button>
+        </section>
+        <section className="tasks"></section>
+        <section className="info"></section>
+      </main>
+    </div>
   )
 }
 
