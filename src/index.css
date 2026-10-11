@@ -71,3 +71,45 @@
 .lucide {
   stroke-width: 3
 }
+
+.info li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 0.875rem;
+  font-size: 1.25rem;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.info ol {
+  counter-reset: step;
+}
+
+.info ol li {
+  counter-increment: step;
+}
+
+.info ol li::before {
+  @apply font-heading;
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: #000;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 3px 3px 0 #fff;
+  text-shadow: none;
+}
+
+.info ul li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  background: #fff;
+  border: 3px solid #000;
+  box-shadow: 2px 2px 0 #000;
+}

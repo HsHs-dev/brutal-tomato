@@ -8,7 +8,7 @@ export default function Header() {
         <span className="bg-black shadow-neo-white rounded-full grid size-10 shrink-0 place-items-center border-2 border-white ">
           <Timer />
         </span>
-        <a href="#" className="leading-none text-lg sm:text-2xl">BRUTAL TOMATO</a>
+        <span href="#" className="leading-none text-lg sm:text-2xl">BRUTAL TOMATO</span>
       </a>
       <nav className="links flex gap-1 sm:gap-4 font-bold">
         <button type="button" aria-label="Report" className="flex gap-2 items-center border-2 border-transparent p-2.5 sm:px-3 sm:py-2 hover:border-white hover:bg-black hover:shadow-neo-white cursor-pointer transition active:translate-x-1 active:translate-y-1 active:shadow-none">
