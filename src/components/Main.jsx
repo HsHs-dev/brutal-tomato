@@ -1,16 +1,99 @@
+import { useEffect, useRef, useState } from "react";
+
 export default function Main() {
+  const [mode, setMode] = useState("focus");
+  const [isActive, setIsActive] = useState(false);
+  const timerRef = useRef(null);
+  const [secondsRemaining, setSecondsRemaining] = useState(25 * 60);
+
+  useEffect(() => {
+    if (isActive && secondsRemaining > 0) {
+      timerRef.current = setInterval(() => {
+        setSecondsRemaining((prev) => prev - 1);
+      }, 1000);
+    } else if (secondsRemaining === 0) {
+      clearInterval(timerRef.current);
+      setIsActive(false);
+    }
+
+    return () => clearInterval(timerRef.current);
+  }, [secondsRemaining, isActive]);
+
+  const handleMode = (mode) => {
+    document.body.dataset.mode = mode;
+    setMode(mode);
+  };
+
+  const startTimer = () => {
+    setIsActive(true);
+    console.log("i got called");
+  };
+  const pauseTimer = () => setIsActive(false);
+
+  const timerFormat = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const seconds = secs % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  };
+
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 md:py-16">
       <section className="timer mb-24 flex flex-col items-center">
-        <div role="tablist" className="modes mb-12 flex flex-wrap justify-center gap-3">
-          <button onClick={() => document.body.dataset.mode = "focus"} role="tab" aria-selected={true} className="border-2 border-white px-4 py-3 font-bold text-white transition hover:bg-white hover:text-black sm:px-6 aria-selected:bg-black aria-selected:shadow-neo-white cursor-pointer aria-selected:hover:bg-black aria-selected:hover:text-white">Pomodoro</button>
-          <button onClick={() => document.body.dataset.mode = "short"} role="tab" className="border-2 border-white px-4 py-3 font-bold text-white transition hover:bg-white hover:text-black sm:px-6 aria-selected:bg-black aria-selected:shadow-neo-white cursor-pointer aria-selected:hover:bg-black aria-selected:hover:text-white">Short Break</button>
-          <button onClick={() => document.body.dataset.mode = "long"} role="tab" className="border-2 border-white px-4 py-3 font-bold text-white transition hover:bg-white hover:text-black sm:px-6 aria-selected:bg-black aria-selected:shadow-neo-white cursor-pointer aria-selected:hover:bg-black aria-selected:hover:text-white">Long Break</button>
+        <div
+          role="tablist"
+          className="modes mb-12 flex flex-wrap justify-center gap-3"
+        >
+          <button
+            onClick={() => handleMode("focus")}
+            role="tab"
+            aria-selected={mode === "focus"}
+            className="border-2 border-white px-4 py-3 font-bold text-white transition hover:bg-white hover:text-black sm:px-6 aria-selected:bg-black aria-selected:shadow-neo-white cursor-pointer aria-selected:hover:bg-black aria-selected:hover:text-white"
+          >
+            Pomodoro
+          </button>
+          <button
+            onClick={() => handleMode("short")}
+            role="tab"
+            aria-selected={mode === "short"}
+            className="border-2 border-white px-4 py-3 font-bold text-white transition hover:bg-white hover:text-black sm:px-6 aria-selected:bg-black aria-selected:shadow-neo-white cursor-pointer aria-selected:hover:bg-black aria-selected:hover:text-white"
+          >
+            Short Break
+          </button>
+          <button
+            onClick={() => handleMode("long")}
+            role="tab"
+            aria-selected={mode === "long"}
+            className="border-2 border-white px-4 py-3 font-bold text-white transition hover:bg-white hover:text-black sm:px-6 aria-selected:bg-black aria-selected:shadow-neo-white cursor-pointer aria-selected:hover:bg-black aria-selected:hover:text-white"
+          >
+            Long Break
+          </button>
         </div>
-        <div role="timer" aria-live="off" className="mb-12 whitespace-nowrap font-heading leading-none tabular-nums text-hard-lg text-[clamp(5.5rem,26vw,7rem)] md:text-[12rem]">25:00</div>
-        <button className="border-4 border-black bg-white px-12 py-5 font-heading text-3xl text-black shadow-neo-xl transition hover:-translate-x-1 hover:-translate-y-1 hover:bg-neo-yellow hover:shadow-neo-2xl active:translate-x-2 active:translate-y-2 active:shadow-none md:px-16 md:py-6 md:text-4xl cursor-pointer">START</button>
+        <div
+          role="timer"
+          aria-live="off"
+          className="mb-12 whitespace-nowrap font-heading leading-none tabular-nums text-hard-lg text-[clamp(5.5rem,26vw,7rem)] md:text-[12rem]"
+        >
+          {timerFormat(secondsRemaining)}
+        </div>
+        {!isActive ? (
+          <button
+            onClick={startTimer}
+            className="border-4 border-black bg-white px-12 py-5 font-heading text-3xl text-black shadow-neo-xl transition hover:-translate-x-1 hover:-translate-y-1 hover:bg-neo-yellow hover:shadow-neo-2xl active:translate-x-2 active:translate-y-2 active:shadow-none md:px-16 md:py-6 md:text-4xl cursor-pointer"
+          >
+            START
+          </button>
+        ) : (
+          <button
+            onClick={pauseTimer}
+            className="border-4 border-black bg-neo-yellow px-12 py-5 font-heading text-3xl text-black transition  active:translate-x-2 active:translate-y-2 active:shadow-none md:px-16 md:py-6 md:text-4xl cursor-pointer"
+          >
+            PAUSE
+          </button>
+        )}
         <div className="text-center status-section mt-10">
-          <p className="status-chip inline-block border-2 border-black bg-white px-3 py-1 text-xl text-black shadow-neo">#1</p>
+          <p className="status-chip inline-block border-2 border-black bg-white px-3 py-1 text-xl text-black shadow-neo">
+            #1
+          </p>
           <p className="status mt-2 text-2xl text-hard-sm">Time to focus!</p>
         </div>
       </section>
@@ -25,7 +108,13 @@ export default function Main() {
             What is Brutal Tomato?
           </h2>
           <p className="max-w-3xl text-xl leading-relaxed [text-shadow:1px_1px_0_#000]">
-            A customizable pomodoro timer that works on desktop and mobile browsers. It helps you focus on any task you are working on, such as study, writing or coding. It is inspired by the <span className="inline-block -rotate-1 border-2 border-black bg-neo-yellow px-1 font-bold text-black shadow-[2px_2px_0_#000] [text-shadow:none]">Pomodoro Technique</span>, a time management method developed by Francesco Cirillo.
+            A customizable pomodoro timer that works on desktop and mobile
+            browsers. It helps you focus on any task you are working on, such as
+            study, writing or coding. It is inspired by the{" "}
+            <span className="inline-block -rotate-1 border-2 border-black bg-neo-yellow px-1 font-bold text-black shadow-[2px_2px_0_#000] [text-shadow:none]">
+              Pomodoro Technique
+            </span>
+            , a time management method developed by Francesco Cirillo.
           </p>
         </section>
 
@@ -34,7 +123,13 @@ export default function Main() {
             What is the Pomodoro Technique?
           </h2>
           <p className="max-w-3xl text-xl leading-relaxed [text-shadow:1px_1px_0_#000]">
-            A timer breaks work into intervals, traditionally 25 minutes long, separated by short breaks. Each interval is a <span className="inline-block -rotate-1 border-2 border-black bg-neo-yellow px-1 font-bold text-black shadow-[2px_2px_0_#000] [text-shadow:none]">pomodoro</span>, the Italian word for tomato, after the tomato-shaped kitchen timer Cirillo used as a student.
+            A timer breaks work into intervals, traditionally 25 minutes long,
+            separated by short breaks. Each interval is a{" "}
+            <span className="inline-block -rotate-1 border-2 border-black bg-neo-yellow px-1 font-bold text-black shadow-[2px_2px_0_#000] [text-shadow:none]">
+              pomodoro
+            </span>
+            , the Italian word for tomato, after the tomato-shaped kitchen timer
+            Cirillo used as a student.
           </p>
         </section>
 
@@ -43,24 +138,12 @@ export default function Main() {
             How to use the timer
           </h2>
           <ol className="max-w-3xl space-y-3.5">
-            <li>
-              Add tasks to work on today
-            </li>
-            <li>
-              Set estimate pomodoros (1 = 25 min of work) for each task
-            </li>
-            <li>
-              Select a task to work on
-            </li>
-            <li>
-              Start the timer and focus for 25 minutes
-            </li>
-            <li>
-              Take a break for 5 minutes when the alarm rings
-            </li>
-            <li>
-              Iterate steps 3 to 5 until your tasks are done
-            </li>
+            <li>Add tasks to work on today</li>
+            <li>Set estimate pomodoros (1 = 25 min of work) for each task</li>
+            <li>Select a task to work on</li>
+            <li>Start the timer and focus for 25 minutes</li>
+            <li>Take a break for 5 minutes when the alarm rings</li>
+            <li>Iterate steps 3 to 5 until your tasks are done</li>
           </ol>
         </section>
 
@@ -69,18 +152,13 @@ export default function Main() {
             Features
           </h2>
           <ul>
-            <li>
-              Estimate finish time for your daily tasks
-            </li>
-            <li>
-              Visual reports of your focused hours
-            </li>
-            <li>
-              Custom settings for timers, auto-start and alarms
-            </li>
+            <li>Estimate finish time for your daily tasks</li>
+            <li>Visual reports of your focused hours</li>
+            <li>Custom settings for timers, auto-start and alarms</li>
           </ul>
         </section>
       </section>
     </main>
-  )
+  );
 }
+
