@@ -21,10 +21,8 @@
   --shadow-neo-white: 4px 4px 0 0 #fff;
 
   --radius-*: initial;
-  /* only rounded-full remains */
 }
 
-/* Set data-mode="focus | short | long" on <body> */
 :root {
   --mode: var(--color-neo-red);
 }
