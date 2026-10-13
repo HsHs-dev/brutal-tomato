@@ -38,6 +38,18 @@ export default function Main() {
 
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 md:py-16">
+
+      <div
+        role="status"
+        className="mx-auto mb-10 max-w-2xl border-2 border-black bg-neo-yellow px-4 py-3 text-center text-black shadow-neo"
+      >
+        <p className="font-bold">🚧 Under Construction</p>
+        <p className="mt-1 text-sm sm:text-base">
+          Brutal Tomato is still a work in progress. Some buttons may not work and
+          some features are yet not implemented. Thanks for your patience!
+        </p>
+      </div>
+
       <section className="timer mb-24 flex flex-col items-center">
         <div
           role="tablist"
