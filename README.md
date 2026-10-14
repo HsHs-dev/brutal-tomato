@@ -4,7 +4,7 @@ A neo-brutalist Pomodoro timer, built with React and Tailwind CSS.
 
 **[Live demo](https://brutal-tomato.netlify.app)**
 
-[A screenshot of brutal tomato main page](./Screenshot.png)
+![A screenshot of brutal tomato main page](./Screenshot.png)
 
 ## About
 
