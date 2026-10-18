@@ -1,40 +1,34 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useTimer } from "../hooks/useTimer";
 
 export default function Main() {
+
   const [mode, setMode] = useState("focus");
-  const [isActive, setIsActive] = useState(false);
-  const timerRef = useRef(null);
-  const [secondsRemaining, setSecondsRemaining] = useState(25 * 60);
 
-  useEffect(() => {
-    if (isActive && secondsRemaining > 0) {
-      timerRef.current = setInterval(() => {
-        setSecondsRemaining((prev) => prev - 1);
-      }, 1000);
-    } else if (secondsRemaining === 0) {
-      clearInterval(timerRef.current);
-      setIsActive(false);
-    }
-
-    return () => clearInterval(timerRef.current);
-  }, [secondsRemaining, isActive]);
+  const MODES = {
+    focus: {
+      mode: "focus",
+      minutes: 25
+    },
+    short: {
+      mode: "short",
+      minutes: 5
+    },
+    long: {
+      mode: "long",
+      minutes: 15
+    },
+  }
 
   const handleMode = (mode) => {
     document.body.dataset.mode = mode;
     setMode(mode);
   };
 
-  const startTimer = () => {
-    setIsActive(true);
-    console.log("i got called");
-  };
-  const pauseTimer = () => setIsActive(false);
 
-  const timerFormat = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const seconds = secs % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-  };
+  // timer hook
+  const currentMode = MODES[mode]
+  const { secondsRemaining, isActive, start, pause, timerFormat } = useTimer(currentMode.minutes)
 
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 md:py-16">
@@ -89,14 +83,14 @@ export default function Main() {
         </div>
         {!isActive ? (
           <button
-            onClick={startTimer}
+            onClick={start}
             className="border-4 border-black bg-white px-12 py-5 font-heading text-3xl text-black shadow-neo-xl transition hover:-translate-x-1 hover:-translate-y-1 hover:bg-neo-yellow hover:shadow-neo-2xl active:translate-x-2 active:translate-y-2 active:shadow-none md:px-16 md:py-6 md:text-4xl cursor-pointer"
           >
             START
           </button>
         ) : (
           <button
-            onClick={pauseTimer}
+            onClick={pause}
             className="border-4 border-black bg-neo-yellow px-12 py-5 font-heading text-3xl text-black transition  active:translate-x-2 active:translate-y-2 active:shadow-none md:px-16 md:py-6 md:text-4xl cursor-pointer"
           >
             PAUSE
