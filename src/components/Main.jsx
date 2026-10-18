@@ -8,15 +8,18 @@ export default function Main() {
   const MODES = {
     focus: {
       mode: "focus",
-      minutes: 25
+      minutes: 25,
+      phrase: "Time to focus!"
     },
     short: {
       mode: "short",
-      minutes: 5
+      minutes: 5,
+      phrase: "Take a five but come back!"
     },
     long: {
       mode: "long",
-      minutes: 15
+      minutes: 15,
+      phrase: "Breathe for a bit, you earned it!"
     },
   }
 
@@ -100,7 +103,7 @@ export default function Main() {
           <p className="status-chip inline-block border-2 border-black bg-white px-3 py-1 text-xl text-black shadow-neo">
             #1
           </p>
-          <p className="status mt-2 text-2xl text-hard-sm">Time to focus!</p>
+          <p className="status mt-2 text-2xl text-hard-sm">{currentMode.phrase}</p>
         </div>
       </section>
       <section className="tasks"></section>
