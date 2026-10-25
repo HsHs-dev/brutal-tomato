@@ -1,7 +1,6 @@
 import { Timer, ChartNoAxesCombined, SlidersVertical, User } from 'lucide-react';
 
-export default function Header() {
-
+export default function Header({ showSettings }) {
   return (
     <header className="flex px-4 py-6 justify-between items-center text-base mx-auto w-full max-w-6xl">
       <a href="#" className="logo flex items-center gap-3 font-heading">
@@ -17,7 +16,7 @@ export default function Header() {
             Report
           </span>
         </button>
-        <button type="button" aria-label="Settings" className="flex gap-2 items-center border-2 border-transparent p-2.5 sm:px-3 sm:py-2 hover:border-white hover:bg-black hover:shadow-neo-white cursor-pointer transition active:translate-x-1 active:translate-y-1 active:shadow-none">
+        <button onClick={showSettings} type="button" aria-label="Settings" className="flex gap-2 items-center border-2 border-transparent p-2.5 sm:px-3 sm:py-2 hover:border-white hover:bg-black hover:shadow-neo-white cursor-pointer transition active:translate-x-1 active:translate-y-1 active:shadow-none">
           <SlidersVertical />
           <span className="hidden sm:inline">
             Settings
