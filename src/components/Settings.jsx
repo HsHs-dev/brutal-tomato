@@ -10,6 +10,12 @@ export default function Settings({ onClose }) {
             <X />
           </button>
         </div>
+        <div className="content p-8 flex gap-8">
+          <div className="timer"></div>
+          <div className="intervals"></div>
+          <div className="alarm"></div>
+          <div className="controls"></div>
+        </div>
       </div>
     </div>
   )
