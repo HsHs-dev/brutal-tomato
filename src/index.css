@@ -39,6 +39,34 @@
   --color-mode: var(--mode);
 }
 
+html {
+  --scrollbar-mode: var(--color-neo-red);
+}
+
+html:has(body[data-mode="short"]) {
+  --scrollbar-mode: var(--color-neo-teal);
+}
+
+html:has(body[data-mode="long"]) {
+  --scrollbar-mode: var(--color-neo-blue);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-mode);
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--color-neo-yellow)
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-mode);
+}
+
 @layer base {
   body {
     @apply bg-mode font-sans font-medium text-white transition-colors duration-300;
