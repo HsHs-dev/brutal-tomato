@@ -12,13 +12,35 @@ function App() {
     setShowSettings(val)
   }
 
+  const [focusMinutes, setFocusMinutes] = useState(25)
+  const [shortMinutes, setShortMinutes] = useState(5)
+  const [longMinutes, setLongMinutes] = useState(15)
+
+  const MODES = {
+    focus: {
+      mode: "focus",
+      minutes: focusMinutes,
+      phrase: "Time to focus!"
+    },
+    short: {
+      mode: "short",
+      minutes: shortMinutes,
+      phrase: "Take a five but come back!"
+    },
+    long: {
+      mode: "long",
+      minutes: longMinutes,
+      phrase: "Breathe for a bit, you earned it!"
+    },
+  }
+
   return (
     <div className="app flex flex-col min-h-dvh">
       {showSettings &&
-        <Settings onClose={() => handleShowSettings(false)} />
+        <Settings onClose={() => handleShowSettings(false)} setFocusMinutes={setFocusMinutes} setShortMinutes={setShortMinutes} setLongMinutes={setLongMinutes} MODES={MODES} />
       }
       <Header showSettings={() => handleShowSettings(true)} />
-      <Main />
+      <Main MODES={MODES} />
       <Footer />
     </div>
   )

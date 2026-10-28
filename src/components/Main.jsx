@@ -1,27 +1,10 @@
 import { useState } from "react";
 import { useTimer } from "../hooks/useTimer";
 
-export default function Main() {
+export default function Main({ MODES }) {
 
   const [mode, setMode] = useState("focus");
 
-  const MODES = {
-    focus: {
-      mode: "focus",
-      minutes: 25,
-      phrase: "Time to focus!"
-    },
-    short: {
-      mode: "short",
-      minutes: 5,
-      phrase: "Take a five but come back!"
-    },
-    long: {
-      mode: "long",
-      minutes: 15,
-      phrase: "Breathe for a bit, you earned it!"
-    },
-  }
 
   const handleMode = (mode) => {
     document.body.dataset.mode = mode;

@@ -1,6 +1,36 @@
 import { X } from 'lucide-react';
+import { useEffect } from 'react';
 
-export default function Settings({ onClose }) {
+export default function Settings({ onClose, setFocusMinutes, setShortMinutes, setLongMinutes, MODES }) {
+
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.key === "Escape") {
+        onClose()
+      }
+    }
+
+    document.addEventListener("keydown", handleEsc)
+
+    return () => {
+      document.removeEventListener("keydown", handleEsc)
+    }
+
+  })
+
+  const handleFocusMinutes = (event) => {
+    setFocusMinutes(event.target.value)
+  }
+
+  const handleShortMinutes = (event) => {
+    setShortMinutes(event.target.value)
+  }
+
+
+  const handleLongMinutes = (event) => {
+    setLongMinutes(event.target.value)
+  }
+
   return (
     <div onClick={onClose} className="overlay fixed inset-0 z-20 flex items-center justify-center bg-black/70 p-4">
       <div onClick={(e) => e.stopPropagation()} className="settings-card w-full max-w-2xl max-h-[90dvh] overflow-auto border-4 border-black bg-cream text-black shadow-(--shadow-neo-xl)">
@@ -17,17 +47,17 @@ export default function Settings({ onClose }) {
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="pomodoro">POMODORO</label>
-                <input name="pomodoro" id="pomodoro" type="number" defaultValue={25} className="w-full bg-white text-black border-4 border-black p-3 font-bold shadow-neo transition focus:-translate-x-0.5 focus:-translate-y-0.5 focus:bg-field-focus focus:outline-none focus:shadow-neo-lg" />
+                <input onChange={handleFocusMinutes} name="pomodoro" id="pomodoro" type="number" defaultValue={MODES.focus.minutes} className="w-full bg-white text-black border-4 border-black p-3 font-bold shadow-neo transition focus:-translate-x-0.5 focus:-translate-y-0.5 focus:bg-field-focus focus:outline-none focus:shadow-neo-lg" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="short-break">SHORT BREAK</label>
-                <input name="short-break" id="short-break" type="number" defaultValue={5} className="w-full bg-white text-black border-4 border-black p-3 font-bold shadow-neo transition focus:-translate-x-0.5 focus:-translate-y-0.5 focus:bg-field-focus focus:outline-none focus:shadow-neo-lg" />
+                <input onChange={handleShortMinutes} name="short-break" id="short-break" type="number" defaultValue={MODES.short.minutes} className="w-full bg-white text-black border-4 border-black p-3 font-bold shadow-neo transition focus:-translate-x-0.5 focus:-translate-y-0.5 focus:bg-field-focus focus:outline-none focus:shadow-neo-lg" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="long-break">LONG BREAK</label>
-                <input name="long" id="long-break" type="number" defaultValue={15} className="w-full bg-white text-black border-4 border-black p-3 font-bold shadow-neo transition focus:-translate-x-0.5 focus:-translate-y-0.5 focus:bg-field-focus focus:outline-none focus:shadow-neo-lg" />
+                <input onChange={handleLongMinutes} name="long" id="long-break" type="number" defaultValue={MODES.long.minutes} className="w-full bg-white text-black border-4 border-black p-3 font-bold shadow-neo transition focus:-translate-x-0.5 focus:-translate-y-0.5 focus:bg-field-focus focus:outline-none focus:shadow-neo-lg" />
               </div>
 
             </div>
