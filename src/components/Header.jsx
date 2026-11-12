@@ -5,7 +5,7 @@ export default function Header({ showSettings }) {
     <header className="flex px-4 py-6 justify-between items-center text-base mx-auto w-full max-w-6xl">
       <a href="/" className="logo flex items-center gap-1 font-heading">
         <span className="grid size-10 shrink-0 place-items-center">
-          <img src="/favicon.svg" width="30" height="30" alt="" />
+          <img src="/tomato.svg" width="30" height="30" alt="" />
         </span>
         <span className="leading-none text-lg sm:text-2xl">BRUTAL TOMATO</span>
       </a>
