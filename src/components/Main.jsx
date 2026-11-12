@@ -23,10 +23,9 @@ export default function Main({ MODES }) {
         role="status"
         className="mx-auto mb-10 max-w-2xl border-2 border-black bg-neo-yellow px-4 py-3 text-center text-black shadow-neo"
       >
-        <p className="font-bold">🚧 Under Construction</p>
+        <p className="font-bold">A simple focus timer, ready to use</p>
         <p className="mt-1 text-sm sm:text-base">
-          Brutal Tomato is still a work in progress. Some buttons may not work and
-          some features are yet not implemented. Thanks for your patience!
+          Choose a focus or break session and press Start. Timer durations are adjustable in Settings; reports and sign-in are not available yet.
         </p>
       </div>
 
@@ -89,10 +88,9 @@ export default function Main({ MODES }) {
           <p className="status mt-2 text-2xl text-hard-sm">{currentMode.phrase}</p>
         </div>
       </section>
-      <section className="tasks"></section>
       <section className="info">
         <h1 className="mb-12 font-heading text-[clamp(2.25rem,6vw,3rem)] leading-[1.1] text-hard">
-          An online Pomodoro timer to boost your productivity
+          Free Online Pomodoro Timer for Focused Work
         </h1>
 
         <section className="mb-12">
@@ -100,9 +98,9 @@ export default function Main({ MODES }) {
             What is Brutal Tomato?
           </h2>
           <p className="max-w-3xl text-xl leading-relaxed [text-shadow:1px_1px_0_#000]">
-            A customizable pomodoro timer that works on desktop and mobile
-            browsers. It helps you focus on any task you are working on, such as
-            study, writing or coding. It is inspired by the{" "}
+            Brutal Tomato is a free Pomodoro timer that works in desktop and mobile
+            browsers. Choose a focus session, a short break, or a long break, then
+            adjust each duration in Settings. It is inspired by the{" "}
             <span className="inline-block -rotate-1 border-2 border-black bg-neo-yellow px-1 font-bold text-black shadow-[2px_2px_0_#000] [text-shadow:none]">
               Pomodoro Technique
             </span>
@@ -115,13 +113,13 @@ export default function Main({ MODES }) {
             What is the Pomodoro Technique?
           </h2>
           <p className="max-w-3xl text-xl leading-relaxed [text-shadow:1px_1px_0_#000]">
-            A timer breaks work into intervals, traditionally 25 minutes long,
-            separated by short breaks. Each interval is a{" "}
+            The Pomodoro Technique breaks work into focused intervals, traditionally
+            25 minutes long, separated by short breaks. Each interval is a{" "}
             <span className="inline-block -rotate-1 border-2 border-black bg-neo-yellow px-1 font-bold text-black shadow-[2px_2px_0_#000] [text-shadow:none]">
               pomodoro
             </span>
-            , the Italian word for tomato, after the tomato-shaped kitchen timer
-            Cirillo used as a student.
+            , the Italian word for tomato, named after the tomato-shaped kitchen
+            timer Francesco Cirillo used as a student.
           </p>
         </section>
 
@@ -130,12 +128,9 @@ export default function Main({ MODES }) {
             How to use the timer
           </h2>
           <ol className="max-w-3xl space-y-3.5">
-            <li>Add tasks to work on today</li>
-            <li>Set estimate pomodoros (1 = 25 min of work) for each task</li>
-            <li>Select a task to work on</li>
-            <li>Start the timer and focus for 25 minutes</li>
-            <li>Take a break for 5 minutes when the alarm rings</li>
-            <li>Iterate steps 3 to 5 until your tasks are done</li>
+            <li>Choose Pomodoro, Short Break, or Long Break.</li>
+            <li>Open Settings if you want to change the session durations.</li>
+            <li>Press Start to begin, or Pause when you need to stop.</li>
           </ol>
         </section>
 
@@ -144,9 +139,9 @@ export default function Main({ MODES }) {
             Features
           </h2>
           <ul>
-            <li>Estimate finish time for your daily tasks</li>
-            <li>Visual reports of your focused hours</li>
-            <li>Custom settings for timers, auto-start and alarms</li>
+            <li>Three sessions for focused work and breaks.</li>
+            <li>Adjustable focus, short break, and long break durations.</li>
+            <li>Works in a modern desktop or mobile browser.</li>
           </ul>
         </section>
       </section>

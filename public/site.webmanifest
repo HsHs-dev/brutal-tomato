@@ -1,0 +1,23 @@
+{
+  "id": "/",
+  "name": "Brutal Tomato — Pomodoro Timer",
+  "short_name": "Brutal Tomato",
+  "description": "A free online Pomodoro timer with adjustable focus and break sessions.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#CD4141",
+  "theme_color": "#CD4141",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

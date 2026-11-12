@@ -3,11 +3,11 @@ import { ChartNoAxesCombined, SlidersVertical, User } from 'lucide-react';
 export default function Header({ showSettings }) {
   return (
     <header className="flex px-4 py-6 justify-between items-center text-base mx-auto w-full max-w-6xl">
-      <a href="#" className="logo flex items-center gap-1 font-heading">
+      <a href="/" className="logo flex items-center gap-1 font-heading">
         <span className="grid size-10 shrink-0 place-items-center">
-          <img src="/favicon.svg?v=2" width="30" height="30" alt="" />
+          <img src="/favicon.svg" width="30" height="30" alt="" />
         </span>
-        <span href="#" className="leading-none text-lg sm:text-2xl">BRUTAL TOMATO</span>
+        <span className="leading-none text-lg sm:text-2xl">BRUTAL TOMATO</span>
       </a>
       <nav className="links flex gap-1 sm:gap-4 font-bold">
         <button type="button" aria-label="Report" className="flex gap-2 items-center border-2 border-transparent p-2.5 sm:px-3 sm:py-2 hover:border-white hover:bg-black hover:shadow-neo-white cursor-pointer transition active:translate-x-1 active:translate-y-1 active:shadow-none">
