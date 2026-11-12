@@ -1,11 +1,11 @@
-import { Timer, ChartNoAxesCombined, SlidersVertical, User } from 'lucide-react';
+import { ChartNoAxesCombined, SlidersVertical, User } from 'lucide-react';
 
 export default function Header({ showSettings }) {
   return (
     <header className="flex px-4 py-6 justify-between items-center text-base mx-auto w-full max-w-6xl">
       <a href="#" className="logo flex items-center gap-3 font-heading">
         <span className="bg-black shadow-neo-white rounded-full grid size-10 shrink-0 place-items-center border-2 border-white ">
-          <Timer />
+          <img src="/favicon.svg?v=2" width="30" height="30" alt="" />
         </span>
         <span href="#" className="leading-none text-lg sm:text-2xl">BRUTAL TOMATO</span>
       </a>
